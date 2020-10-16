@@ -2,13 +2,14 @@ const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
 const db = require('../src/db');
+const {players} = db;
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
         const res = await request.get('/api/players');
 
         expect(res.status).toBe(200);
-        expect(res.body).toEqual(db.players);
+        expect(res.body).toEqual(players);
         done();
     });
 
@@ -24,5 +25,25 @@ describe('Player endpoints', function () {
         expect(res.status).toBe(201);
         expect(res.body).toEqual(newPlayer);
         done();
-    })
+    });
+
+    it('should return a player by a given id', async function (done) {
+        const playerId = 3;
+        const expectedPlayer = players.find(player => player.id === playerId);
+        const res = await request.get(`/api/players/${playerId}`);
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expectedPlayer);
+        done();
+    });
+
+    it('should return NOT_FOUND error given an invalid id', async function (done) {
+        const playerId = 0;
+        const expectedError = {code: 'NOT_FOUND'};
+        const res = await request.get(`/api/players/${playerId}`);
+
+        expect(res.status).toBe(404);
+        expect(res.body).toEqual(expectedError);
+        done();
+    });
 });
