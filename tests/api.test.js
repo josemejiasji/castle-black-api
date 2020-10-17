@@ -1,8 +1,7 @@
 const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
-const db = require('../src/db');
-const { players } = db;
+const { players } = require('./db');
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
