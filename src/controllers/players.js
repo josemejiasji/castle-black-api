@@ -1,45 +1,40 @@
-const { players } = require('../db');
+const PlayerService = require('../services/player');
 
 const findAll = function (req, res) {
-    res.json(players);
+    const players = PlayerService.findAll();
+
+    return res.json(players);
 }
 
 const create = function (req, res) {
-    const newPlayer = req.body;
-    players.push(newPlayer);
+    const newPlayer = PlayerService.create(req.body);
 
-    res.status(201).json(newPlayer);
+    return res.status(201).json(newPlayer);
 }
 
 const findOne = function (req, res) {
-    const player = players.find(player => player.id === parseInt(req.params.id));
+    const player = PlayerService.findOne(req.params.id);
 
     if (!player) {
         return res.status(404).json({ code: "NOT_FOUND" });
     }
-    res.json(player);
+
+    return res.json(player);
 }
 
-const doActions = function (req, res) {
-    const playerIndex = players.findIndex(player => player.id ===
-        parseInt(req.params.id));
+const doAction = function (req, res) {
+    const player = PlayerService.doAction(req.params.id, req.body.action);
 
-    if (!playerIndex < 0) {
+    if (!player) {
         return res.status(404).json({ code: "NOT_FOUND" });
     }
 
-    if (req.body.action === 'kill') {
-        players[playerIndex].health = 0;
-    } else if (req.body.action === 'arm') {
-        players[playerIndex].armedObject = req.body.payload;
-    }
-
-    res.json(players[playerIndex]);
+    return res.json(player);
 }
 
 module.exports = {
     findAll,
     create,
-    findOne, 
-    doActions,
+    findOne,
+    doAction,
 }

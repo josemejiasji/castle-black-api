@@ -13,6 +13,6 @@ api.get("/objects", function (req, res) {
 api.get("/players", players.findAll);
 api.post("/players", players.create);
 api.get("/players/:id", players.findOne);
-api.post('/players/:id/actions', players.doActions);
+api.post('/players/:id/actions', players.doAction);
 
 module.exports = api;
