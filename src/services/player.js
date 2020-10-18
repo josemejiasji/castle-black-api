@@ -1,10 +1,12 @@
 const { players } = require('../db');
+const { getNextId } = require('../utils');
 
 const findAll = function () {
     return players;
 }
 
 const create = function (payload) {
+    payload.id = getNextId(players);
     players.push(payload);
 
     return players[players.length - 1];
