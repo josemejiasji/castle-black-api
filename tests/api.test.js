@@ -1,8 +1,7 @@
 const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
-const db = require('../src/db');
-const { players } = db;
+const { players } = require('../src/db');
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
@@ -53,6 +52,31 @@ describe('Player endpoints', function () {
         expectedPlayer.health = 0;
 
         const res = await request.post(`/api/players/${playerId}/actions`).send({ action: 'kill' });
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expectedPlayer);
+        done();
+    });
+
+    it('should return a player with armedObject given a valid object', async function (done) {
+        const playerId = 2;
+        const objectId = 2;
+        const expectedPlayer = players.find(player => player.id === playerId);
+        expectedPlayer.armedObject = objectId;
+
+        const res = await request.post(`/api/players/${playerId}/actions`).send({ action: 'arm', payload: objectId });
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expectedPlayer);
+        done();
+    });
+
+    it('should return a player without armedObject given an invalid object', async function (done) {
+        const playerId = 4;
+        const objectId = 1;
+        const expectedPlayer = players.find(player => player.id === playerId);
+
+        const res = await request.post(`/api/players/${playerId}/actions`).send({ action: 'arm', payload: objectId });
 
         expect(res.status).toBe(200);
         expect(res.body).toEqual(expectedPlayer);
