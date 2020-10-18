@@ -9,7 +9,7 @@ const findAll = function (req, res) {
 const create = function (req, res) {
     const object = ObjectService.create(req.body);
 
-    return res.json(object);
+    return res.status(201).json(object);
 }
 
 module.exports = {

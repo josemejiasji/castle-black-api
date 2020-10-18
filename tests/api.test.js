@@ -1,7 +1,7 @@
 const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
-const { players } = require('../src/db');
+const { players, objects } = require('../src/db');
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
@@ -82,4 +82,26 @@ describe('Player endpoints', function () {
         expect(res.body).toEqual(expectedPlayer);
         done();
     });
+});
+
+describe('Object endpoints', function () {
+    it('should return all objects', async function (done) {
+        const res = await request.get('/api/objects');
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(objects);
+        done();
+    })
+
+    it('should create a new object', async function (done) {
+        const newObject = {
+            name: 'bow',
+            value: 30,
+        };
+        const res = await request.post('/api/objects').send(newObject);
+
+        expect(res.status).toBe(201);
+        expect(res.body).toEqual(newObject);
+        done();
+    })
 });
