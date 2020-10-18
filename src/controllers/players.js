@@ -23,7 +23,8 @@ const findOne = function (req, res) {
 }
 
 const doAction = function (req, res) {
-    const player = PlayerService.doAction(req.params.id, req.body.action);
+    const { action, payload } = req.body;
+    const player = PlayerService.doAction(req.params.id, action, payload);
 
     if (!player) {
         return res.status(404).json({ code: "NOT_FOUND" });
