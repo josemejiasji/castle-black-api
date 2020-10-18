@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const api = Router();
-const { players } = require('./controllers/players');
+const PlayersController = require('./controllers/players');
 
 
 // EXAMPLE ENDPOINT: LIST ALL OBJECTS
@@ -10,9 +10,9 @@ api.get("/objects", function (req, res) {
 
 
 // Players endpoints
-api.get("/players", players.findAll);
-api.post("/players", players.create);
-api.get("/players/:id", players.findOne);
-api.post('/players/:id/actions', players.doAction);
+api.get("/players", PlayersController.findAll);
+api.post("/players", PlayersController.create);
+api.get("/players/:id", PlayersController.findOne);
+api.post('/players/:id/actions', PlayersController.doAction);
 
 module.exports = api;
