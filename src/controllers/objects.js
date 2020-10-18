@@ -22,8 +22,19 @@ const findOne = function (req, res) {
     return res.json(object);
 }
 
+const updateOne = function(req, res) {
+    const object = ObjectService.updateOne(req.params.id, req.body);
+
+    if (!object) {
+        return res.status(404).json({ code: "NOT_FOUND" });
+    }
+
+    return res.json(object);
+}
+
 module.exports = {
     findAll,
     create,
-    findOne
+    findOne,
+    updateOne,
 }

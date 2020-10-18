@@ -2,7 +2,7 @@ const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
 const { players, objects } = require('../src/db');
-const {getNextId} = require('../src/utils');
+const { getNextId } = require('../src/utils');
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
@@ -125,6 +125,18 @@ describe('Object endpoints', function () {
 
         expect(res.status).toBe(404);
         expect(res.body).toEqual(expectedError);
+        done();
+    });
+
+    it('should return an object with updated value', async function (done) {
+        const objectId = 1;
+        const newValue = 35;
+        const expectedObject = objects.find(object => object.id === objectId);
+        expectedObject.value = newValue;
+        const res = await request.patch(`/api/objects/${objectId}`).send({ value: newValue });
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expectedObject);
         done();
     });
 });

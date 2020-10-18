@@ -8,6 +8,7 @@ const ObjectsController = require('./controllers/objects');
 api.get("/objects", ObjectsController.findAll);
 api.post("/objects", ObjectsController.create);
 api.get("/objects/:id", ObjectsController.findOne);
+api.patch("/objects/:id", ObjectsController.updateOne);
 
 
 // Players endpoints
