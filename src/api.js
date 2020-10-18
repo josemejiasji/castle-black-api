@@ -7,6 +7,7 @@ const ObjectsController = require('./controllers/objects');
 // EXAMPLE ENDPOINT: LIST ALL OBJECTS
 api.get("/objects", ObjectsController.findAll);
 api.post("/objects", ObjectsController.create);
+api.get("/objects/:id", ObjectsController.findOne);
 
 
 // Players endpoints

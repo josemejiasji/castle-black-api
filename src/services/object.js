@@ -11,7 +11,12 @@ const create = function (payload) {
     return objects[objects.length - 1];
 }
 
+const findOne = function (id) {
+    return objects.find((object) => object.id == id);
+}
+
 module.exports = {
     findAll,
     create,
+    findOne,
 }

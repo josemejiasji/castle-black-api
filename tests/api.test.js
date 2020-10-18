@@ -2,6 +2,7 @@ const app = require('../app');
 const supertest = require('supertest');
 const request = supertest(app);
 const { players, objects } = require('../src/db');
+const {getNextId} = require('../src/utils');
 
 describe('Player endpoints', function () {
     it('should return all players', async function (done) {
@@ -14,6 +15,7 @@ describe('Player endpoints', function () {
 
     it('should create a new player', async function (done) {
         const newPlayer = {
+            id: getNextId(players),
             name: 'Arya Stark',
             age: 18,
             health: 100,
@@ -91,10 +93,11 @@ describe('Object endpoints', function () {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(objects);
         done();
-    })
+    });
 
     it('should create a new object', async function (done) {
         const newObject = {
+            id: getNextId(objects),
             name: 'bow',
             value: 30,
         };
@@ -103,5 +106,25 @@ describe('Object endpoints', function () {
         expect(res.status).toBe(201);
         expect(res.body).toEqual(newObject);
         done();
-    })
+    });
+
+    it('should return an object by a given id', async function (done) {
+        const objectId = 3;
+        const expectedObject = objects.find(object => object.id === objectId);
+        const res = await request.get(`/api/objects/${objectId}`);
+
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expectedObject);
+        done();
+    });
+
+    it('should return NOT_FOUND error given an invalid id', async function (done) {
+        const objectId = 0;
+        const expectedError = { code: 'NOT_FOUND' };
+        const res = await request.get(`/api/objects/${objectId}`);
+
+        expect(res.status).toBe(404);
+        expect(res.body).toEqual(expectedError);
+        done();
+    });
 });

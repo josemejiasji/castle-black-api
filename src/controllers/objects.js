@@ -12,7 +12,18 @@ const create = function (req, res) {
     return res.status(201).json(object);
 }
 
+const findOne = function (req, res) {
+    const object = ObjectService.findOne(req.params.id);
+
+    if (!object) {
+        return res.status(404).json({ code: "NOT_FOUND" });
+    }
+
+    return res.json(object);
+}
+
 module.exports = {
     findAll,
     create,
+    findOne
 }
