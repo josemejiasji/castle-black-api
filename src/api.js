@@ -9,6 +9,7 @@ api.get("/objects", ObjectsController.findAll);
 api.post("/objects", ObjectsController.create);
 api.get("/objects/:id", ObjectsController.findOne);
 api.patch("/objects/:id", ObjectsController.updateOne);
+api.delete("/objects/:id", ObjectsController.deleteOne);
 
 
 // Players endpoints

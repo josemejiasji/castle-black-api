@@ -139,4 +139,12 @@ describe('Object endpoints', function () {
         expect(res.body).toEqual(expectedObject);
         done();
     });
+
+    it('should delete an object by given id', async function (done) {
+        const objectId = 1;
+        const res = await request.delete(`/api/objects/${objectId}`);
+
+        expect(res.status).toBe(204);
+        done();
+    });
 });
