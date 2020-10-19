@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "0a080050-1f70-42fb-b9ce-e6cb43166fb9",
+		"name": "Castle Black API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all players",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SERVER}}/api/players",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all objects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SERVER}}/api/objects",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Arya Stark\",\r\n    \"age\": 18,\r\n    \"health\": 100,\r\n    \"bag\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/players",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new object",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"bow\",\r\n   \"value\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/objects",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get player by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SERVER}}/api/players/1",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"players",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get object by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SERVER}}/api/objects/1",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"objects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kill player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"kill\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/players/1/actions",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"players",
+						"1",
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Arm player with object",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"arm\",\r\n    \"payload\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/players/1/actions",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"players",
+						"1",
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update object",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 35\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/objects/5",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"objects",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete object",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{SERVER}}/api/objects/1",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"objects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
