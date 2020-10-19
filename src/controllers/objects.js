@@ -16,7 +16,7 @@ const findOne = function (req, res) {
     const object = ObjectService.findOne(req.params.id);
 
     if (!object) {
-        return res.status(404).json({ code: "NOT_FOUND" });
+        return res.status(404).json({ code: 'NOT_FOUND' });
     }
 
     return res.json(object);
@@ -26,7 +26,7 @@ const updateOne = function(req, res) {
     const object = ObjectService.updateOne(req.params.id, req.body);
 
     if (!object) {
-        return res.status(404).json({ code: "NOT_FOUND" });
+        return res.status(404).json({ code: 'NOT_FOUND' });
     }
 
     return res.json(object);
@@ -36,7 +36,7 @@ const deleteOne = function (req, res) {
     const object = ObjectService.deleteOne(req.params.id, req.body);
 
     if (!object) {
-        return res.status(404).json({ code: "NOT_FOUND" });
+        return res.status(404).json({ code: 'NOT_FOUND' });
     }
 
     return res.status(204).json();

@@ -9,7 +9,13 @@
 			"name": "Get all players",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{SERVER}}/api/players",
 					"host": [
@@ -27,7 +33,13 @@
 			"name": "Get all objects",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{SERVER}}/api/objects",
 					"host": [
@@ -45,7 +57,13 @@
 			"name": "Create a new player",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \"name\": \"Arya Stark\",\r\n    \"age\": 18,\r\n    \"health\": 100,\r\n    \"bag\": []\r\n}",
@@ -72,7 +90,13 @@
 			"name": "Create a new object",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \"name\": \"bow\",\r\n   \"value\": 30\r\n}",
@@ -99,7 +123,13 @@
 			"name": "Get player by id",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{SERVER}}/api/players/1",
 					"host": [
@@ -118,15 +148,21 @@
 			"name": "Get object by id",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{SERVER}}/api/players/1",
+					"raw": "{{SERVER}}/api/objects/1",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"players",
+						"objects",
 						"1"
 					]
 				}
@@ -137,7 +173,13 @@
 			"name": "Kill player",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"action\": \"kill\"\r\n}",
@@ -166,7 +208,13 @@
 			"name": "Arm player with object",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"action\": \"arm\",\r\n    \"payload\": 1\r\n}",
@@ -195,7 +243,13 @@
 			"name": "Update object",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"value\": 35\r\n}",
@@ -223,7 +277,13 @@
 			"name": "Delete object",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic R09UOlcxbnQzcjFzQzBtMW5nIQ==",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{SERVER}}/api/objects/1",
 					"host": [
