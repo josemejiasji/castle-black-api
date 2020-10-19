@@ -6,12 +6,13 @@ const credentials = {
 
 const isValidAuth = function (req) {
     const authHeader = req.header('Authorization');
-    const buffer = new Buffer(authHeader.split(' ')[1], 'base64');
-    let reqCredentials = buffer.toString('utf8');
-    if (reqCredentials) {
+    if (authHeader) {
+        const buffer = new Buffer(authHeader.split(' ')[1], 'base64');
+        let reqCredentials = buffer.toString('utf8');
         reqCredentials = reqCredentials.split(':');
         return reqCredentials[0] === credentials.user && reqCredentials[1] === credentials.pass;
     }
+
 
     return false;
 }
